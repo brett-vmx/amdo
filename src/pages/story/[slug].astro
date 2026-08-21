@@ -1,0 +1,195 @@
+---
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import { ArrowLeft } from '@lucide/astro';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const stories = await getCollection('stories');
+  return stories.map((story) => ({
+    params: { slug: story.id },
+    props: { story },
+  }));
+}
+
+const { story } = Astro.props;
+const { title, video, audio, coverImage, videoDuration, audioDuration } = story.data;
+const { Content } = await render(story);
+---
+
+<Layout title={`${title} — Amdo Stories`}>
+  <article class="mx-auto max-w-[680px] px-4 py-6 sm:py-8">
+    <!-- Back to library -->
+    <a
+      href="/"
+      class="inline-flex items-center gap-1.5 text-teal hover:text-navy font-medium mb-5 transition-colors"
+    >
+      <ArrowLeft size={20} aria-hidden="true" />
+      Back to Stories
+    </a>
+
+    <!-- Cover -->
+    <div class="aspect-square overflow-hidden rounded-card bg-navy/5 shadow-sm">
+      <Image
+        src={coverImage}
+        alt={`Cover image for ${title}`}
+        width={680}
+        height={680}
+        class="h-full w-full object-cover"
+        loading="eager"
+      />
+    </div>
+
+    <h1 class="mt-6 text-3xl sm:text-4xl font-bold text-navy">{title}</h1>
+
+    <!-- Video player -->
+    <div class="mt-6 rounded-card bg-surface p-4 shadow-sm">
+      <div class="flex justify-between items-center mb-3">
+        <span class="text-sm font-semibold tracking-widest text-[#1a9db8] uppercase">Watch</span>
+        <a
+          href={video}
+          download
+          aria-label="Download video"
+          class="flex items-center justify-center rounded-xl"
+          style="width:32px;height:32px;background:rgba(26,157,184,0.12);"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1a9db8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+        </a>
+      </div>
+      <video controls preload="none" playsinline class="w-full rounded-lg bg-black">
+        <source src={video} type="video/mp4" />
+        Your browser does not support the video element.
+      </video>
+      <p class="mt-2 text-sm text-gray-500">{videoDuration}</p>
+    </div>
+
+    <!-- Audio player -->
+    <div class="mt-6 rounded-card bg-surface p-4 shadow-sm">
+      <div class="flex justify-between items-center mb-3">
+        <span class="text-sm font-semibold tracking-widest text-[#1a9db8] uppercase">Listen</span>
+        <a
+          href={audio}
+          download
+          aria-label="Download audio"
+          class="flex items-center justify-center rounded-xl"
+          style="width:32px;height:32px;background:rgba(26,157,184,0.12);"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1a9db8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+        </a>
+      </div>
+      <audio controls preload="metadata" class="w-full" src={audio}>
+        Your browser does not support the audio element.
+      </audio>
+      <p class="mt-2 text-sm text-gray-500">{audioDuration}</p>
+    </div>
+
+    <!-- Read (collapsible) -->
+    <section class="mt-8">
+      <div class="rounded-card bg-surface shadow-sm overflow-hidden">
+        <div class="px-5 pt-5 pb-0">
+          <p class="text-sm font-semibold tracking-widest text-[#1a9db8] uppercase mb-3">Read</p>
+          <div class="relative">
+            <div
+              id="transcript-body"
+              class="overflow-hidden text-navy/90 leading-relaxed [&_p]:mb-4"
+              style="max-height:7.5rem"
+            >
+              <Content />
+            </div>
+            <div
+              id="transcript-fade"
+              class="absolute bottom-0 left-0 right-0 h-16 pointer-events-none"
+              style="background:linear-gradient(to bottom, transparent, white)"
+            >
+            </div>
+          </div>
+          <div id="transcript-collapse" class="hidden flex justify-center p-2">
+            <button
+              id="transcript-collapse-btn"
+              type="button"
+              class="bg-[#e0f7fc] text-[#1a9db8] text-xs font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full hover:opacity-90 transition-opacity"
+            >
+              READ LESS ↑
+            </button>
+          </div>
+        </div>
+        <div id="transcript-toggle-wrap" class="flex justify-center p-2">
+          <button
+            id="transcript-toggle"
+            type="button"
+            class="bg-[#e0f7fc] text-[#1a9db8] text-xs font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full hover:opacity-90 transition-opacity"
+          >
+            READ MORE ↓
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Discuss -->
+    <section class="mt-8 mb-4">
+      <div class="rounded-card bg-surface shadow-sm px-5 py-5">
+        <p class="text-sm font-semibold tracking-widest text-[#1a9db8] uppercase mb-4">Discuss</p>
+        <ol class="list-decimal list-outside pl-5 space-y-3">
+          <li class="text-navy/90">What did you like about that story?</li>
+          <li class="text-navy/90">Is there anything you didn't understand or like about the story?</li>
+          <li class="text-navy/90">What does this story teach us about God or Jesus?</li>
+          <li class="text-navy/90">What does this story teach us about man?</li>
+          <li class="text-navy/90">After hearing this story, is there anything you need to believe?</li>
+          <li class="text-navy/90">After hearing this story, what do you need to do or change in your life?</li>
+        </ol>
+      </div>
+    </section>
+  </article>
+</Layout>
+
+<script>
+  function initTranscript() {
+    const body          = document.getElementById('transcript-body');
+    const fade          = document.getElementById('transcript-fade');
+    const toggleWrap    = document.getElementById('transcript-toggle-wrap');
+    const readMoreBtn   = document.getElementById('transcript-toggle');
+    const collapseBox   = document.getElementById('transcript-collapse');
+    const collapseBtn   = document.getElementById('transcript-collapse-btn');
+
+    if (!body || !fade || !toggleWrap || !readMoreBtn || !collapseBox || !collapseBtn) return;
+
+    const COLLAPSED_HEIGHT = '7.5rem';
+
+    body.style.maxHeight    = COLLAPSED_HEIGHT;
+    fade.style.display      = '';
+    toggleWrap.style.display = '';
+    collapseBox.classList.add('hidden');
+
+    requestAnimationFrame(() => {
+      if (body.scrollHeight <= body.clientHeight) {
+        fade.style.display       = 'none';
+        toggleWrap.style.display = 'none';
+      }
+    });
+
+    readMoreBtn.addEventListener('click', () => {
+      body.style.maxHeight     = 'none';
+      fade.style.display       = 'none';
+      toggleWrap.style.display = 'none';
+      collapseBox.classList.remove('hidden');
+    });
+
+    collapseBtn.addEventListener('click', () => {
+      body.style.maxHeight     = COLLAPSED_HEIGHT;
+      fade.style.display       = '';
+      toggleWrap.style.display = '';
+      collapseBox.classList.add('hidden');
+      body.closest('section')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  }
+
+  document.addEventListener('astro:page-load', initTranscript);
+</script>

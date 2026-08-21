@@ -1,0 +1,57 @@
+---
+import '../styles/global.css';
+import { ViewTransitions } from 'astro:transitions';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Amdo Stories',
+  description = '11 oral Bible stories, "Creation to Christ," narrated in the Amdo dialect of Tibetan',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0d2d3d" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://amdo.app/" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://amdo.app/og_image.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content="https://amdo.app/og_image.png" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <script src="/registerSW.js" is:inline></script>
+    <title>{title}</title>
+    <ViewTransitions />
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <header class="bg-navy text-white">
+      <nav class="mx-auto max-w-5xl px-4 py-4 flex items-center justify-center"
+           style="padding-top: max(1rem, env(safe-area-inset-top))">
+        <h1 class="text-2xl font-bold tracking-tight text-white">
+          Amdo Stories
+        </h1>
+      </nav>
+    </header>
+
+    <main class="flex-1 w-full bg-[#f4f6f7]" transition:animate="fade">
+      <slot />
+    </main>
+
+  </body>
+</html>

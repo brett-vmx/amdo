@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ */
+/* Design tokens — Tailwind v4 @theme.                                 */
+/* Each token is also exposed as a CSS var, e.g. var(--color-teal).    */
+/* Utilities generated: bg-navy, text-teal, rounded-card, etc.         */
+/* ------------------------------------------------------------------ */
+@theme {
+  /* Brand palette */
+  --color-navy: #0d2d3d;        /* backgrounds, nav */
+  --color-teal: #1a9db8;        /* accent / links / active */
+  --color-teal-light: #4ecde6;  /* hover */
+
+  /* Surfaces */
+  --color-surface: #ffffff;
+  --color-ink: #0d2d3d;         /* default body text on light surfaces */
+
+  /* Base typography — 20px body for oral / low-literacy readers */
+  --text-base: 1.25rem;         /* 20px */
+
+  /* Rounding */
+  --radius-card: 0.625rem;      /* 10px — cards sit in the 8–12px band */
+}
+
+/* ------------------------------------------------------------------ */
+/* Base layer                                                          */
+/* ------------------------------------------------------------------ */
+@layer base {
+  html {
+    background-color: #0d2d3d; /* fills safe-area-inset-top region behind status bar */
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-size: var(--text-base);
+    line-height: 1.6;
+    color: var(--color-ink);
+    background-color: #0d2d3d; /* matches html so no seam in status bar area */
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Native audio/video players tinted with the brand accent */
+  audio, video {
+    accent-color: var(--color-teal);
+  }
+}

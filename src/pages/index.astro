@@ -1,0 +1,439 @@
+---
+import { getCollection } from 'astro:content';
+import { getImage } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import StoryCard from '../components/StoryCard.astro';
+
+const all = await getCollection('stories');
+const byOrder = (a: any, b: any) => a.data.order - b.data.order;
+
+const stories = all.sort(byOrder);
+
+const storyData = await Promise.all(stories.map(async (e) => {
+  const optimizedCover = await getImage({
+    src: e.data.coverImage,
+    width: 680,
+    format: 'webp',
+    quality: 80,
+  });
+  return {
+    slug: e.id,
+    title: e.data.title,
+    order: e.data.order,
+    video: e.data.video,
+    audio: e.data.audio,
+    videoDuration: e.data.videoDuration,
+    audioDuration: e.data.audioDuration,
+    coverSrc: optimizedCover.src,
+    body: e.body ?? '',
+  };
+}));
+
+const gridClass = 'grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4';
+---
+
+<Layout>
+  <div class="mx-auto max-w-5xl px-4 py-6 sm:py-8">
+    <p class="text-navy/60 mb-8 text-center">11 stories from Creation to Christ</p>
+
+    <section aria-label="Stories">
+      <div class={gridClass}>
+        {
+          stories.map((story) => (
+            <StoryCard
+              slug={story.id}
+              title={story.data.title}
+              duration={story.data.videoDuration}
+              cover={story.data.coverImage}
+            />
+          ))
+        }
+      </div>
+    </section>
+  </div>
+
+  <!-- ===================== STORY MODAL ===================== -->
+  <div id="story-modal" class="fixed inset-0 z-50 hidden">
+    <!-- Backdrop -->
+    <div id="modal-backdrop" class="absolute inset-0 bg-black/60"></div>
+    <!-- Panel -->
+    <div
+      id="modal-panel"
+      class="absolute bottom-0 left-0 right-0 rounded-t-2xl max-h-[92vh]
+             md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-full md:max-w-[680px] md:rounded-2xl md:max-h-[90vh]
+             bg-[#f4f6f7] flex flex-col transition-transform duration-300 translate-y-full"
+    >
+      <!-- Scrollable content layer -->
+      <div class="flex-1 overflow-y-auto" style="padding-bottom:80px">
+        <div id="modal-content"></div>
+      </div>
+      <!-- Desktop X close button — absolute on panel, always visible in top-right corner -->
+      <button id="modal-close-desktop" type="button" aria-label="Close story"
+        class="hidden md:flex"
+        style="position:absolute;top:1rem;right:1rem;z-index:10;width:2.25rem;height:2.25rem;align-items:center;justify-content:center;border-radius:9999px;background:rgba(255,255,255,.8);border:none;cursor:pointer;color:#6b7280">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <!-- Floating close pill — mobile only, absolutely positioned over scroll content -->
+      <div class="flex md:hidden" style="position:absolute;bottom:0;left:0;right:0;justify-content:center;padding:24px 0 20px;background:linear-gradient(to bottom,transparent,#f4f6f7 55%);pointer-events:none">
+        <button id="modal-close" type="button"
+          style="background:#0d2d3d;border:none;border-radius:999px;padding:10px 32px;font-size:13px;font-weight:600;color:white;cursor:pointer;letter-spacing:.03em;pointer-events:auto">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style is:global>
+  #modal-progress::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 9999px;
+    background: #1a9db8;
+    border: none;
+    cursor: pointer;
+  }
+  #modal-progress::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 9999px;
+    background: #1a9db8;
+    border: none;
+    cursor: pointer;
+  }
+</style>
+
+<script define:vars={{ storyData }}>
+  window.__STORIES__ = storyData;
+</script>
+
+<script>
+  interface StoryEntry {
+    slug: string;
+    title: string;
+    video: string;
+    audio: string;
+    videoDuration: string;
+    audioDuration: string;
+    coverSrc: string;
+    body: string;
+  }
+
+  (window as any).handleDownload = function(url: string, filename: string) {
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches
+      || (window.navigator as any).standalone === true;
+    if (isStandalone) {
+      window.open(url, '_blank');
+    } else {
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+  };
+
+  function initModal() {
+    const modal           = document.getElementById('story-modal');
+    const backdrop        = document.getElementById('modal-backdrop');
+    const panel           = document.getElementById('modal-panel');
+    const closeBtn        = document.getElementById('modal-close');
+    const desktopCloseBtn = document.getElementById('modal-close-desktop');
+    const content         = document.getElementById('modal-content');
+    const scrollDiv       = panel?.querySelector<HTMLElement>('.overflow-y-auto') ?? null;
+    if (!modal || !backdrop || !panel || !closeBtn || !content) return;
+
+    const stories: StoryEntry[] = (window as unknown as { __STORIES__: StoryEntry[] }).__STORIES__ ?? [];
+    let modalOpen   = false;
+    let pushedState = false;
+
+    const prevAbort = (window as any).__modalAbort as AbortController | undefined;
+    if (prevAbort) prevAbort.abort();
+    const abort = new AbortController();
+    (window as any).__modalAbort = abort;
+    const { signal } = abort;
+
+    function bodyToHtml(body: string): string {
+      return body
+        .split(/\n\n+/)
+        .map((c) => c.trim())
+        .filter(Boolean)
+        .map((c) => `<p style="margin-bottom:1rem">${c.replace(/\n/g, ' ')}</p>`)
+        .join('');
+    }
+
+    function openModal(slug: string) {
+      const story = stories.find((s) => s.slug === slug);
+      if (!story) return;
+
+      content.innerHTML = `
+        <img src="${story.coverSrc}" alt="${story.title}" style="width:100%;aspect-ratio:1;object-fit:cover;display:block" />
+        <div style="padding:1.5rem 1rem 1rem">
+          <h2 style="font-size:1.875rem;font-weight:700;color:#0d2d3d;margin-bottom:1.5rem">${story.title}</h2>
+
+          <div style="background:#fff;border-radius:10px;padding:1rem;box-shadow:0 1px 3px rgba(0,0,0,.1)">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem">
+              <span style="font-size:.875rem;font-weight:600;letter-spacing:.1em;color:#1a9db8;text-transform:uppercase">Watch</span>
+              <button type="button" aria-label="Download video"
+                 onclick="handleDownload('${story.video}', '${story.slug}.mp4')"
+                 class="hidden md:flex"
+                 style="width:32px;height:32px;border-radius:10px;background:rgba(26,157,184,0.12);align-items:center;justify-content:center;border:none;cursor:pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1a9db8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+              </button>
+            </div>
+            <video controls preload="none" poster="${story.coverSrc}" playsinline style="width:100%;border-radius:8px;background:#000;display:block">
+              <source src="${story.video}" type="video/mp4" />
+              Your browser does not support the video element.
+            </video>
+          </div>
+
+          <div style="background:#fff;border-radius:10px;padding:1rem;box-shadow:0 1px 3px rgba(0,0,0,.1);margin-top:1.5rem">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem">
+              <span style="font-size:.875rem;font-weight:600;letter-spacing:.1em;color:#1a9db8;text-transform:uppercase">Listen</span>
+              <button type="button" aria-label="Download audio"
+                 onclick="handleDownload('${story.audio}', '${story.slug}.mp3')"
+                 class="hidden md:flex"
+                 style="width:32px;height:32px;border-radius:10px;background:rgba(26,157,184,0.12);align-items:center;justify-content:center;border:none;cursor:pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1a9db8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+              </button>
+            </div>
+            <audio id="modal-audio" preload="metadata" src="${story.audio}" style="display:none"></audio>
+            <div style="display:flex;align-items:center;gap:1rem;margin-top:.75rem">
+              <button id="modal-play-btn" type="button" aria-label="Play"
+                style="width:64px;height:64px;flex-shrink:0;border-radius:9999px;background:#0d2d3d;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center">
+                <svg id="modal-play-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                <svg id="modal-pause-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white" aria-hidden="true" style="display:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+              </button>
+              <input id="modal-progress" type="range" min="0" max="100" value="0" step="0.1"
+                style="flex:1;min-width:0;height:6px;-webkit-appearance:none;appearance:none;border-radius:9999px;outline:none;cursor:pointer;--progress:0%;background:linear-gradient(to right,#1a9db8 var(--progress),#e5e7eb var(--progress))" />
+              <span id="modal-time-display" style="flex-shrink:0;font-size:.875rem;color:#9ca3af;white-space:nowrap">0:00 / ${story.audioDuration}</span>
+            </div>
+          </div>
+
+          <section style="margin-top:2rem">
+            <div style="background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.1)">
+              <div style="padding:1.25rem 1.25rem 0">
+                <p style="font-size:.875rem;font-weight:600;letter-spacing:.1em;color:#1a9db8;text-transform:uppercase;margin-bottom:.75rem">Read</p>
+                <div style="position:relative">
+                  <div id="modal-transcript-body" style="overflow:hidden;max-height:7.5rem;color:rgba(13,45,61,.9);line-height:1.75">
+                    ${bodyToHtml(story.body)}
+                  </div>
+                  <div id="modal-transcript-fade" style="position:absolute;bottom:0;left:0;right:0;height:4rem;pointer-events:none;background:linear-gradient(to bottom,transparent,white)"></div>
+                </div>
+                <div id="modal-collapse-wrap" style="display:none;justify-content:center;padding:.5rem">
+                  <button id="modal-collapse-btn" type="button"
+                    style="background:#e0f7fc;color:#1a9db8;font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.375rem 1rem;border-radius:9999px;border:none;cursor:pointer">
+                    READ LESS ↑
+                  </button>
+                </div>
+              </div>
+              <div id="modal-readmore-wrap" style="display:flex;justify-content:center;padding:.5rem">
+                <button id="modal-readmore-btn" type="button"
+                  style="background:#e0f7fc;color:#1a9db8;font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.375rem 1rem;border-radius:9999px;border:none;cursor:pointer">
+                  READ MORE ↓
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <section style="margin-top:2rem;margin-bottom:1rem">
+            <div style="background:#fff;border-radius:10px;padding:1.25rem;box-shadow:0 1px 3px rgba(0,0,0,.1)">
+              <p style="font-size:.875rem;font-weight:600;letter-spacing:.1em;color:#1a9db8;text-transform:uppercase;margin-bottom:1rem">Discuss</p>
+              <ol style="padding-left:1.25rem;list-style:decimal outside">
+                <li style="margin-bottom:.75rem;color:rgba(13,45,61,.9)">What did you like about that story?</li>
+                <li style="margin-bottom:.75rem;color:rgba(13,45,61,.9)">Is there anything you didn't understand or like about the story?</li>
+                <li style="margin-bottom:.75rem;color:rgba(13,45,61,.9)">What does this story teach us about God or Jesus?</li>
+                <li style="margin-bottom:.75rem;color:rgba(13,45,61,.9)">What does this story teach us about man?</li>
+                <li style="margin-bottom:.75rem;color:rgba(13,45,61,.9)">After hearing this story, is there anything you need to believe?</li>
+                <li style="color:rgba(13,45,61,.9)">After hearing this story, what do you need to do or change in your life?</li>
+              </ol>
+            </div>
+          </section>
+
+        </div>
+      `;
+
+      initModalTranscript();
+      initAudioPlayer(story.audioDuration);
+
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      panel.scrollTop = 0;
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          panel.classList.remove('translate-y-full');
+          panel.classList.add('translate-y-0');
+        });
+      });
+      modalOpen = true;
+
+      if (window.location.pathname !== `/story/${slug}`) {
+        history.pushState({ modal: slug }, '', `/story/${slug}`);
+        pushedState = true;
+      }
+    }
+
+    function initModalTranscript() {
+      const tbody = document.getElementById('modal-transcript-body') as HTMLElement | null;
+      const tfade = document.getElementById('modal-transcript-fade') as HTMLElement | null;
+      const twrap = document.getElementById('modal-readmore-wrap') as HTMLElement | null;
+      const tmore = document.getElementById('modal-readmore-btn') as HTMLButtonElement | null;
+      const tcoll = document.getElementById('modal-collapse-wrap') as HTMLElement | null;
+      const tless = document.getElementById('modal-collapse-btn') as HTMLButtonElement | null;
+      if (!tbody || !tfade || !twrap || !tmore || !tcoll || !tless) return;
+
+      requestAnimationFrame(() => {
+        if (tbody.scrollHeight <= tbody.clientHeight) {
+          tfade.style.display = 'none';
+          twrap.style.display = 'none';
+        }
+      });
+
+      tmore.addEventListener('click', () => {
+        tbody.style.maxHeight = 'none';
+        tfade.style.display = 'none';
+        twrap.style.display = 'none';
+        tcoll.style.display = 'flex';
+      });
+
+      tless.addEventListener('click', () => {
+        tbody.style.maxHeight = '7.5rem';
+        tfade.style.display = '';
+        twrap.style.display = 'flex';
+        tcoll.style.display = 'none';
+        tbody.closest('section')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+    }
+
+    function initAudioPlayer(storyDuration: string) {
+      const audio      = document.getElementById('modal-audio')       as HTMLAudioElement | null;
+      const playBtn    = document.getElementById('modal-play-btn')    as HTMLButtonElement | null;
+      const playIcon   = document.getElementById('modal-play-icon')   as SVGElement | null;
+      const pauseIcon  = document.getElementById('modal-pause-icon')  as SVGElement | null;
+      const progress   = document.getElementById('modal-progress')    as HTMLInputElement | null;
+      const timeDisplay = document.getElementById('modal-time-display') as HTMLElement | null;
+      if (!audio || !playBtn || !playIcon || !pauseIcon || !progress || !timeDisplay) return;
+
+      let totalLabel = storyDuration;
+
+      function fmt(secs: number): string {
+        const m = Math.floor(secs / 60);
+        const s = Math.floor(secs % 60);
+        return `${m}:${s.toString().padStart(2, '0')}`;
+      }
+
+      function setPlaying(playing: boolean) {
+        playIcon.style.display  = playing ? 'none' : '';
+        pauseIcon.style.display = playing ? '' : 'none';
+        playBtn.setAttribute('aria-label', playing ? 'Pause' : 'Play');
+      }
+
+      playBtn.addEventListener('click', () => {
+        if (audio.paused) { audio.play(); setPlaying(true); }
+        else              { audio.pause(); setPlaying(false); }
+      });
+
+      audio.addEventListener('timeupdate', () => {
+        if (!audio.duration) return;
+        const pct = (audio.currentTime / audio.duration) * 100;
+        progress.value = String(pct);
+        progress.style.setProperty('--progress', pct + '%');
+        timeDisplay.textContent = `${fmt(audio.currentTime)} / ${totalLabel}`;
+      });
+
+      audio.addEventListener('loadedmetadata', () => {
+        totalLabel = fmt(audio.duration);
+        timeDisplay.textContent = `0:00 / ${totalLabel}`;
+      });
+
+      progress.addEventListener('input', () => {
+        if (!audio.duration) return;
+        audio.currentTime = (parseFloat(progress.value) / 100) * audio.duration;
+        progress.style.setProperty('--progress', progress.value + '%');
+      });
+
+      audio.addEventListener('ended', () => {
+        setPlaying(false);
+        progress.value = '0';
+        progress.style.setProperty('--progress', '0%');
+        timeDisplay.textContent = `0:00 / ${totalLabel}`;
+      });
+    }
+
+    function closeModal(fromPopstate = false) {
+      if (!modalOpen) return;
+      modalOpen = false;
+
+      const audio = document.getElementById('modal-audio') as HTMLAudioElement | null;
+      if (audio) { audio.pause(); audio.src = ''; audio.load(); }
+      const video = document.querySelector('#modal-content video') as HTMLVideoElement | null;
+      if (video) { video.pause(); video.removeAttribute('src'); video.load(); }
+
+      panel.classList.remove('translate-y-0');
+      panel.classList.add('translate-y-full');
+
+      let closed = false;
+      const finish = () => {
+        if (closed) return;
+        closed = true;
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+        content.innerHTML = '';
+      };
+      panel.addEventListener('transitionend', finish, { once: true });
+      setTimeout(finish, 350);
+
+      if (!fromPopstate && pushedState) history.back();
+      pushedState = false;
+    }
+
+    document.querySelectorAll<HTMLAnchorElement>('a[data-slug]').forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal(link.dataset.slug ?? '');
+      });
+    });
+
+    closeBtn.addEventListener('click', () => closeModal(false));
+    if (desktopCloseBtn) desktopCloseBtn.addEventListener('click', () => closeModal(false));
+    backdrop.addEventListener('click', () => closeModal(false));
+
+    let touchStartY = 0;
+    panel.addEventListener('touchstart', (e) => {
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+    panel.addEventListener('touchend', (e) => {
+      if (window.innerWidth >= 768) return;
+      const deltaY = e.changedTouches[0].clientY - touchStartY;
+      if (deltaY > 80 && (scrollDiv?.scrollTop ?? 0) === 0) {
+        closeModal(false);
+      }
+    }, { passive: true });
+
+    window.addEventListener('popstate', () => {
+      if (modalOpen) closeModal(true);
+    }, { signal });
+
+    const m = window.location.pathname.match(/^\/story\/(.+)$/);
+    if (m) {
+      const slug = m[1];
+      if (stories.find((s) => s.slug === slug)) {
+        pushedState = false;
+        openModal(slug);
+      }
+    }
+  }
+
+  document.addEventListener('astro:page-load', () => {
+    initModal();
+  });
+</script>
