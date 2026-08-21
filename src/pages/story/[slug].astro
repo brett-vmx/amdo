@@ -1,6 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
-import { Image } from 'astro:assets';
+import { getImage } from 'astro:assets';
 import { ArrowLeft } from '@lucide/astro';
 import Layout from '../../layouts/Layout.astro';
 
@@ -15,6 +15,8 @@ export async function getStaticPaths() {
 const { story } = Astro.props;
 const { title, video, audio, coverImage, videoDuration, audioDuration } = story.data;
 const { Content } = await render(story);
+
+const optimizedCover = await getImage({ src: coverImage, width: 680, format: 'webp', quality: 80 });
 ---
 
 <Layout title={`${title} — Amdo Stories`}>
@@ -28,19 +30,7 @@ const { Content } = await render(story);
       Back to Stories
     </a>
 
-    <!-- Cover -->
-    <div class="aspect-square overflow-hidden rounded-card bg-navy/5 shadow-sm">
-      <Image
-        src={coverImage}
-        alt={`Cover image for ${title}`}
-        width={680}
-        height={680}
-        class="h-full w-full object-cover"
-        loading="eager"
-      />
-    </div>
-
-    <h1 class="mt-6 text-3xl sm:text-4xl font-bold text-navy">{title}</h1>
+    <h1 class="text-3xl sm:text-4xl font-bold text-navy">{title}</h1>
 
     <!-- Video player -->
     <div class="mt-6 rounded-card bg-surface p-4 shadow-sm">
@@ -60,7 +50,7 @@ const { Content } = await render(story);
           </svg>
         </a>
       </div>
-      <video controls preload="none" playsinline class="w-full rounded-lg bg-black">
+      <video controls preload="none" playsinline poster={optimizedCover.src} class="w-full rounded-lg bg-black">
         <source src={video} type="video/mp4" />
         Your browser does not support the video element.
       </video>
