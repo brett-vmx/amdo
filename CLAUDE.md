@@ -76,7 +76,7 @@ Stories live in `src/content/stories/*.md` with this frontmatter schema (`src/co
 ```
 Markdown body = English transcript from `Amdo-Story-Set.csv`'s "English Story Text" column (already translated — no translation work needed).
 
-**DISCUSS questions are NOT per-story.** The source Glide app had a "Questions" section with some story-specific bullets, but the CSV export didn't include that data and only a partial list was visible in one screenshot. This app reuses C2C's standard 6-question generic discussion set instead. If per-story questions surface later, they'd need a new frontmatter field.
+**DISCUSS questions are NOT per-story** — same 6 questions on every story, matching the original Glide app (its "Questions" section lived directly in the app, not the CSV export; client supplied the exact text after the initial scaffold). Question 2 has three nested sub-bullets. This is intentionally different from C2C's discussion set — do not merge the two.
 
 ## Asset locations
 ```
