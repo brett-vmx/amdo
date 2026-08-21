@@ -3,8 +3,8 @@
 ## What this project is
 A mobile-first PWA story player for 11 oral Bible stories ("Creation to Christ") narrated in the Amdo dialect of Tibetan. All UI/text is English — no written Tibetan script appears anywhere in the app. Rebuilt from a Glide app of the same name. Modeled directly on the sibling C2C app's architecture.
 
-Live at: https://amdo.app (not yet deployed)
-Repo: not yet pushed to GitHub
+Live at: https://amdo.app (Netlify site `amdo-app`, GitHub-connected auto-deploy on push to `main`)
+Repo: https://github.com/brett-vmx/amdo
 Materials/source assets: `~/Documents/PROJECTS/Amdo` (CSVs, screenshots, raw video/audio downloads, logo)
 
 ---
@@ -15,7 +15,7 @@ Materials/source assets: `~/Documents/PROJECTS/Amdo` (CSVs, screenshots, raw vid
 - **Astro Content Collections** using the Astro 5 loader API (glob loader in `src/content.config.ts`, NOT the legacy `src/content/config.ts`)
 - **@vite-pwa/astro** for PWA/service worker
 - **Lucide icons**
-- **Deploy: Netlify** (static build, no server functions) — not yet connected
+- **Deploy: Netlify** (static build, no server functions) — site `amdo-app`, connected to GitHub for auto-deploy on push to `main`
 - **Media: Cloudflare R2** — video and audio are NOT bundled in the repo; both are hosted on R2 and referenced by absolute URL
 
 ---
@@ -37,7 +37,7 @@ Each story has both a video (with Amdo narration, visuals) and an independently-
 
 ### Media hosting on Cloudflare R2
 - Bucket: `amdo-media` (Cloudflare account `Brett@vmx.media's Account`, account ID `66bcad746baae7c2984ca1b91be6d70d`)
-- Public access: r2.dev managed URL — `https://pub-66cb2e2312304f0e87c78a38cab98fc0.r2.dev` (no custom domain yet; `amdo.app` is not yet added as a Cloudflare zone on this account — once it is, attach a custom domain like `media.amdo.app` to the bucket and update `astro.config.mjs` + all story frontmatter URLs)
+- Public access: custom domain `https://media.amdo.app` (attached via `wrangler r2 bucket domain add`; the r2.dev managed URL is no longer used in the app, though it still works as a fallback)
 - CORS: `GET`/`HEAD`, all origins, `Range`/`Content-Type` request headers, exposes `Content-Length`/`Content-Range`/`Accept-Ranges` — required for `<video>`/`<audio>` seeking to work cross-origin
 - Object keys: `video/[order]-[Title-With-Hyphens].mp4`, `audio/[order]-[Title-With-Hyphens].mp3`
 - Uploaded via `wrangler r2 object put` — see `~/Documents/PROJECTS/Amdo/downloads/` for the original local copies (covers, video, audio) if buckets ever need to be recreated or migrated to another provider
@@ -68,8 +68,8 @@ Stories live in `src/content/stories/*.md` with this frontmatter schema (`src/co
   title: string
   order: number
   coverImage: image()        // resolved relative path in src/assets
-  video: string               // full R2 URL, e.g. https://pub-....r2.dev/video/1-Creation-of-the-Physical-World.mp4
-  audio: string               // full R2 URL, e.g. https://pub-....r2.dev/audio/1-Creation-of-the-Physical-World.mp3
+  video: string               // full R2 URL, e.g. https://media.amdo.app/video/1-Creation-of-the-Physical-World.mp4
+  audio: string               // full R2 URL, e.g. https://media.amdo.app/audio/1-Creation-of-the-Physical-World.mp3
   videoDuration: string        // "2:17" — from the Glide CSV, matches the video file
   audioDuration: string        // "2:09" — measured with ffprobe from the actual mp3, NOT in the source CSV
 }
@@ -97,8 +97,7 @@ R2 object keys follow the same `[order]-[Title-With-Hyphens]` base, under `video
 Single page (`src/pages/index.astro`): header ("Amdo Stories") → subtitle → 2-col mobile / 3–4-col desktop grid of all 11 stories, ordered 1–11. No toggle, no sections, no footnote (no external image credit needed — covers are the client's own Glide assets).
 
 **Modal** (same anchoring/animation rules as C2C — see C2C's CLAUDE.md for the exact mobile-bottom-sheet vs desktop-centered mechanics, swipe-to-dismiss, and close-button behavior, all copied verbatim):
-- Cover image
-- Title
+- Title (no separate cover-image hero — it was removed as a duplicate of the video's poster frame, which shows the same art immediately below)
 - **WATCH** — native video, preload="none", poster = optimized cover
 - **LISTEN** — custom audio player (copied from C2C)
 - **READ** — collapsible transcript, READ MORE/LESS
@@ -120,8 +119,12 @@ Single page (`src/pages/index.astro`): header ("Amdo Stories") → subtitle → 
 
 ---
 
-## Known open items (as of initial scaffold)
-- **No custom domain on R2 media yet** — `amdo.app` isn't a Cloudflare zone on this account. Once added, create a custom domain (e.g. `media.amdo.app`) on the `amdo-media` bucket and update `astro.config.mjs`'s `R2_MEDIA_ORIGIN` plus every story's `video`/`audio` frontmatter URL.
-- **No GitHub repo / Netlify site connected yet.**
+## Deployment / domain setup (as configured)
+- **DNS**: `amdo.app` zone lives on the same Cloudflare account as R2 (`Brett@vmx.media's Account` / `66bcad746baae7c2984ca1b91be6d70d`, zone ID `475ff5055cb0de715e6f2b5a4b317be3`). Root and `www` are both **proxied CNAMEs to `amdo-app.netlify.app`** (Cloudflare flattens the apex CNAME automatically) — same pattern as the account's other Cloudflare+Netlify site, `tenpa.app`. Domain used to be pointed at Glide; that old A record was deleted before adding the CNAMEs.
+- **`www` → apex redirect**: Netlify's `domain_aliases` field does NOT auto-redirect on its own — it just serves the site on both domains. The actual 301 is `public/_redirects`: `https://www.amdo.app/* https://amdo.app/:splat 301!`. Don't remove this file or the www version will silently serve dupe content instead of redirecting.
+- **Netlify site**: `amdo-app` (site id `e3d44f4e-29e3-4a34-af49-8e979a772106`), custom domain `amdo.app`, domain alias `www.amdo.app`. Created via the Netlify API directly (not the CLI/UI) — the first attempt had `installation_id: null` in its repo config and failed to clone ("Host key verification failed") because API-created sites don't automatically link the GitHub App the way the UI's OAuth flow does. Fixed by PATCHing the site with the same `installation_id` (`133913030`) that the account's other working sites (e.g. `c2c-app`) already use — that ID is tied to the GitHub App installation for the `brett-vmx` account, not per-repo, so it's reusable if this ever needs to be redone.
+- **Cloudflare API token caveat**: the wrangler OAuth token has `zone:read` but no `dns_records:*` scope, so DNS record changes can't be scripted with it — only R2's own custom-domain endpoint works programmatically (`wrangler r2 bucket domain add`, which manages its own CNAME outside the normal DNS API). Adding/editing ordinary DNS records requires the Cloudflare dashboard or a separately-issued API token with `Zone.DNS` edit permission.
+
+## Other open items
 - **`Amdo-More-Bible.csv`** (19 Tibetan Bible/discipleship resources) is unused — client wants to hold off on a Bible tab for now, may revisit.
 - **Mars Hill "The Hope" video** — client has permission for a different app; likely to request permission for this one too, but hasn't yet. Don't add without explicit confirmation.

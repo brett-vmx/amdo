@@ -2,8 +2,8 @@
 title: "Abraham"
 order: 3
 coverImage: "../../assets/stories/covers/3-Abraham.jpg"
-video: "https://pub-66cb2e2312304f0e87c78a38cab98fc0.r2.dev/video/3-Abraham.mp4"
-audio: "https://pub-66cb2e2312304f0e87c78a38cab98fc0.r2.dev/audio/3-Abraham.mp3"
+video: "https://media.amdo.app/video/3-Abraham.mp4"
+audio: "https://media.amdo.app/audio/3-Abraham.mp3"
 videoDuration: "1:52"
 audioDuration: "1:45"
 ---

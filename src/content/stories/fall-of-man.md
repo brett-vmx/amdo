@@ -2,8 +2,8 @@
 title: "Fall of Man"
 order: 2
 coverImage: "../../assets/stories/covers/2-Fall-of-Man.jpeg"
-video: "https://pub-66cb2e2312304f0e87c78a38cab98fc0.r2.dev/video/2-Fall-of-Man.mp4"
-audio: "https://pub-66cb2e2312304f0e87c78a38cab98fc0.r2.dev/audio/2-Fall-of-Man.mp3"
+video: "https://media.amdo.app/video/2-Fall-of-Man.mp4"
+audio: "https://media.amdo.app/audio/2-Fall-of-Man.mp3"
 videoDuration: "2:54"
 audioDuration: "2:47"
 ---

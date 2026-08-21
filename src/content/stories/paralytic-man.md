@@ -2,8 +2,8 @@
 title: "Paralytic Man"
 order: 7
 coverImage: "../../assets/stories/covers/7-Paralytic-Man.jpeg"
-video: "https://pub-66cb2e2312304f0e87c78a38cab98fc0.r2.dev/video/7-Paralytic-Man.mp4"
-audio: "https://pub-66cb2e2312304f0e87c78a38cab98fc0.r2.dev/audio/7-Paralytic-Man.mp3"
+video: "https://media.amdo.app/video/7-Paralytic-Man.mp4"
+audio: "https://media.amdo.app/audio/7-Paralytic-Man.mp3"
 videoDuration: "1:48"
 audioDuration: "1:44"
 ---

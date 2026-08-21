@@ -2,8 +2,8 @@
 title: "Blind Man"
 order: 8
 coverImage: "../../assets/stories/covers/8-Blind-Man.jpg"
-video: "https://pub-66cb2e2312304f0e87c78a38cab98fc0.r2.dev/video/8-Blind-Man.mp4"
-audio: "https://pub-66cb2e2312304f0e87c78a38cab98fc0.r2.dev/audio/8-Blind-Man.mp3"
+video: "https://media.amdo.app/video/8-Blind-Man.mp4"
+audio: "https://media.amdo.app/audio/8-Blind-Man.mp3"
 videoDuration: "3:27"
 audioDuration: "3:22"
 ---

@@ -2,8 +2,8 @@
 title: "The Thessalonians"
 order: 11
 coverImage: "../../assets/stories/covers/11-The-Thessalonians.jpeg"
-video: "https://pub-66cb2e2312304f0e87c78a38cab98fc0.r2.dev/video/11-The-Thessalonians.mp4"
-audio: "https://pub-66cb2e2312304f0e87c78a38cab98fc0.r2.dev/audio/11-The-Thessalonians.mp3"
+video: "https://media.amdo.app/video/11-The-Thessalonians.mp4"
+audio: "https://media.amdo.app/audio/11-The-Thessalonians.mp3"
 videoDuration: "1:36"
 audioDuration: "1:30"
 ---

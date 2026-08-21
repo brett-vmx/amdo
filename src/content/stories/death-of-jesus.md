@@ -2,8 +2,8 @@
 title: "Death of Jesus"
 order: 9
 coverImage: "../../assets/stories/covers/9-Death-of-Jesus.jpeg"
-video: "https://pub-66cb2e2312304f0e87c78a38cab98fc0.r2.dev/video/9-Death-of-Jesus.mp4"
-audio: "https://pub-66cb2e2312304f0e87c78a38cab98fc0.r2.dev/audio/9-Death-of-Jesus.mp3"
+video: "https://media.amdo.app/video/9-Death-of-Jesus.mp4"
+audio: "https://media.amdo.app/audio/9-Death-of-Jesus.mp3"
 videoDuration: "2:20"
 audioDuration: "2:15"
 ---

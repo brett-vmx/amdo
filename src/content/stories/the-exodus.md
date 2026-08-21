@@ -2,8 +2,8 @@
 title: "The Exodus"
 order: 4
 coverImage: "../../assets/stories/covers/4-The-Exodus.jpeg"
-video: "https://pub-66cb2e2312304f0e87c78a38cab98fc0.r2.dev/video/4-The-Exodus.mp4"
-audio: "https://pub-66cb2e2312304f0e87c78a38cab98fc0.r2.dev/audio/4-The-Exodus.mp3"
+video: "https://media.amdo.app/video/4-The-Exodus.mp4"
+audio: "https://media.amdo.app/audio/4-The-Exodus.mp3"
 videoDuration: "2:18"
 audioDuration: "2:13"
 ---

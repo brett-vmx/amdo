@@ -3,7 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 import VitePWA from '@vite-pwa/astro';
 import sitemap from '@astrojs/sitemap';
 
-const R2_MEDIA_ORIGIN = 'https://pub-66cb2e2312304f0e87c78a38cab98fc0.r2.dev';
+const R2_MEDIA_ORIGIN = 'https://media.amdo.app';
 
 // https://astro.build/config
 export default defineConfig({
