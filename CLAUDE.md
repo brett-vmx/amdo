@@ -80,7 +80,7 @@ Markdown body = English transcript from `Amdo-Story-Set.csv`'s "English Story Te
 
 ## Asset locations
 ```
-src/assets/stories/covers/       ← source cover JPG/JPEG (mixed extensions — kept as downloaded from Glide)
+src/assets/stories/covers/       ← source cover art, 1280×720 WebP (16:9, matching video aspect ratio — see below)
 public/icons/                    ← PWA icon PNGs (generated from amdo-logo.jpg via PIL, center-cropped square)
 public/favicon.png               ← favicon (48×48, from amdo-logo.jpg)
 public/og_image.png              ← 1200×630, logo centered on navy background (not stretched)
@@ -88,8 +88,13 @@ public/og_image.png              ← 1200×630, logo centered on navy background
 No local audio/video — see R2 section above.
 
 ## File naming convention
-Covers follow: `[order]-[Title-With-Hyphens].[ext]` (ext varies — some Glide URLs were `.jpg`, some `.jpeg`)
+Covers follow: `[order]-[Title-With-Hyphens].webp`
 R2 object keys follow the same `[order]-[Title-With-Hyphens]` base, under `video/` and `audio/` prefixes.
+
+## Cover art sizing
+Covers are custom-illustrated (replacing the original placeholder art from another project), 1280×720 WebP, 16:9 to match the actual video files' native resolution (854×480, also 16:9) — this matters because these images double as `<video poster>`: a mismatched aspect ratio letterboxes and can cause a layout jump when the video's real dimensions load. One image per story serves both the grid (square-cropped via `object-fit: cover`) and the poster (shown near-native); we deliberately didn't split into two separate crops — see judgment call below. 1280px wide is 2x retina-sharp at the largest CSS display width in the app (~680px, the modal/story-page container) — `getImage()` in both `index.astro` and `[slug].astro` requests `width: 1280` to actually deliver that resolution to the browser (bumped up from an earlier 680, which was capping output regardless of source size).
+
+**Judgment call — single image, not two:** a wide 16:9 composition auto-cropped to a square for the grid can clip subjects at the edges (e.g. Blind Man's story has a group of people at the right edge that gets tight in the square crop). We accepted this tradeoff to avoid doubling the asset count and adding a second frontmatter field — revisit per-story only if a specific crop looks bad, not by default.
 
 ---
 

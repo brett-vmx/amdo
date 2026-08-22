@@ -1,7 +1,7 @@
 ---
 title: "Elijah"
 order: 5
-coverImage: "../../assets/stories/covers/5-Elijah.jpg"
+coverImage: "../../assets/stories/covers/5-Elijah.webp"
 video: "https://media.amdo.app/video/5-Elijah.mp4"
 audio: "https://media.amdo.app/audio/5-Elijah.mp3"
 videoDuration: "2:23"

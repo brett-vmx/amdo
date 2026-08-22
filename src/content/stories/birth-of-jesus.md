@@ -1,7 +1,7 @@
 ---
 title: "Birth of Jesus"
 order: 6
-coverImage: "../../assets/stories/covers/6-Birth-of-Jesus.jpeg"
+coverImage: "../../assets/stories/covers/6-Birth-of-Jesus.webp"
 video: "https://media.amdo.app/video/6-Birth-of-Jesus.mp4"
 audio: "https://media.amdo.app/audio/6-Birth-of-Jesus.mp3"
 videoDuration: "2:33"

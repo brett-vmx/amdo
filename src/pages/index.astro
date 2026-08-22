@@ -12,7 +12,7 @@ const stories = all.sort(byOrder);
 const storyData = await Promise.all(stories.map(async (e) => {
   const optimizedCover = await getImage({
     src: e.data.coverImage,
-    width: 680,
+    width: 1280,
     format: 'webp',
     quality: 80,
   });

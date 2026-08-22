@@ -16,7 +16,7 @@ const { story } = Astro.props;
 const { title, video, audio, coverImage, videoDuration, audioDuration } = story.data;
 const { Content } = await render(story);
 
-const optimizedCover = await getImage({ src: coverImage, width: 680, format: 'webp', quality: 80 });
+const optimizedCover = await getImage({ src: coverImage, width: 1280, format: 'webp', quality: 80 });
 ---
 
 <Layout title={`${title} — Amdo Stories`}>

@@ -1,7 +1,7 @@
 ---
 title: "Abraham"
 order: 3
-coverImage: "../../assets/stories/covers/3-Abraham.jpg"
+coverImage: "../../assets/stories/covers/3-Abraham.webp"
 video: "https://media.amdo.app/video/3-Abraham.mp4"
 audio: "https://media.amdo.app/audio/3-Abraham.mp3"
 videoDuration: "1:52"

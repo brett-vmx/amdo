@@ -1,7 +1,7 @@
 ---
 title: "Resurrection of Jesus"
 order: 10
-coverImage: "../../assets/stories/covers/10-Resurrection-of-Jesus.jpeg"
+coverImage: "../../assets/stories/covers/10-Resurrection-of-Jesus.webp"
 video: "https://media.amdo.app/video/10-Resurrection-of-Jesus.mp4"
 audio: "https://media.amdo.app/audio/10-Resurrection-of-Jesus.mp3"
 videoDuration: "2:32"

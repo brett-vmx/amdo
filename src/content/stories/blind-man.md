@@ -1,7 +1,7 @@
 ---
 title: "Blind Man"
 order: 8
-coverImage: "../../assets/stories/covers/8-Blind-Man.jpg"
+coverImage: "../../assets/stories/covers/8-Blind-Man.webp"
 video: "https://media.amdo.app/video/8-Blind-Man.mp4"
 audio: "https://media.amdo.app/audio/8-Blind-Man.mp3"
 videoDuration: "3:27"

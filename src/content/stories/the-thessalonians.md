@@ -1,7 +1,7 @@
 ---
 title: "The Thessalonians"
 order: 11
-coverImage: "../../assets/stories/covers/11-The-Thessalonians.jpeg"
+coverImage: "../../assets/stories/covers/11-The-Thessalonians.webp"
 video: "https://media.amdo.app/video/11-The-Thessalonians.mp4"
 audio: "https://media.amdo.app/audio/11-The-Thessalonians.mp3"
 videoDuration: "1:36"

@@ -1,7 +1,7 @@
 ---
 title: "Creation of the Physical World"
 order: 1
-coverImage: "../../assets/stories/covers/1-Creation-of-the-Physical-World.jpg"
+coverImage: "../../assets/stories/covers/1-Creation-of-the-Physical-World.webp"
 video: "https://media.amdo.app/video/1-Creation-of-the-Physical-World.mp4"
 audio: "https://media.amdo.app/audio/1-Creation-of-the-Physical-World.mp3"
 videoDuration: "2:17"
