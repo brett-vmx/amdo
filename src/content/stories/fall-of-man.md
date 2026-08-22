@@ -1,5 +1,5 @@
 ---
-title: "Fall of Man"
+title: "Man and Woman Sin"
 order: 2
 coverImage: "../../assets/stories/covers/2-Fall-of-Man.webp"
 video: "https://media.amdo.app/video/2-Fall-of-Man.mp4"

@@ -5,11 +5,10 @@ import type { ImageMetadata } from 'astro';
 interface Props {
   slug: string;
   title: string;
-  duration: string;
   cover: ImageMetadata;
 }
 
-const { slug, title, duration, cover } = Astro.props;
+const { slug, title, cover } = Astro.props;
 ---
 
 <a
@@ -19,24 +18,21 @@ const { slug, title, duration, cover } = Astro.props;
          transition-all duration-200 hover:scale-[1.03] hover:shadow-xl
          focus-visible:outline-2 focus-visible:outline-teal focus-visible:outline-offset-2"
 >
-  <div class="aspect-square overflow-hidden bg-navy/5">
+  <div class="aspect-video overflow-hidden bg-navy/5">
     <Image
       src={cover}
       alt={`Cover image for ${title}`}
       width={512}
-      height={512}
+      height={288}
       class="h-full w-full object-cover"
       loading="lazy"
     />
   </div>
 
-  <!-- White info area -->
-  <div class="bg-surface p-3 sm:p-4">
-    <h3 class="font-bold leading-snug text-navy group-hover:text-teal transition-colors text-lg">
+  <!-- Navy info area -->
+  <div class="bg-navy p-3 sm:p-4">
+    <h3 class="font-bold leading-snug text-white group-hover:text-teal-light transition-colors text-lg">
       {title}
     </h3>
-    {duration && (
-      <p class="mt-1 text-sm text-gray-500">{duration}</p>
-    )}
   </div>
 </a>

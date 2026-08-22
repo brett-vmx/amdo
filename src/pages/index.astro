@@ -29,7 +29,7 @@ const storyData = await Promise.all(stories.map(async (e) => {
   };
 }));
 
-const gridClass = 'grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4';
+const gridClass = 'grid grid-cols-2 gap-4 sm:grid-cols-3';
 ---
 
 <Layout>
@@ -43,7 +43,6 @@ const gridClass = 'grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4';
             <StoryCard
               slug={story.id}
               title={story.data.title}
-              duration={story.data.videoDuration}
               cover={story.data.coverImage}
             />
           ))

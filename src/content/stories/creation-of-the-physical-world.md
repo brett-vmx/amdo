@@ -1,5 +1,5 @@
 ---
-title: "Creation of the Physical World"
+title: "Creation"
 order: 1
 coverImage: "../../assets/stories/covers/1-Creation-of-the-Physical-World.webp"
 video: "https://media.amdo.app/video/1-Creation-of-the-Physical-World.mp4"
