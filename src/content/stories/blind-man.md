@@ -8,16 +8,16 @@ videoDuration: "3:27"
 audioDuration: "3:22"
 ---
 
-Then, one day, while Savior Jesus and his students were going together to another place, on the road they met a blind man. Savior Jesus' students asked Savior Jesus: "Why can't this person's eyes see? Is it because his father and mother have sin? Or because he himself has sin?" They asked that.
+One day Savior Jesus and His closest followers saw a blind man. And His closest followers asked Him: "Why is this man blind? Is it because his parents sinned? Or because he himself sinned?"
 
-Savior Jesus replied back: "It is not because he has sin. It is also not because his father and mother have sin. Today through God, on this person, an amazing thing will happen." He said that.
+Jesus replied: "Neither. It's not because either one of them sinned. It's so that God can show His power in his life."
 
-Savior Jesus spit on the ground, prepared a small piece of mud, and rubbed it in the eyes of the blind person. Then (He) said to that blind person, "You go to the edge of the pond and wash your eyes." He said. The blind man washed off his eyes at the edge of the pond, and he saw very clearly. Then he went back.
+Then Jesus spit on the ground and made a small piece of mud and rubbed it in the eyes of the blind man. Then He said to the blind man, "Go to this certain pool and wash your eyes." So, the blind man went to the pool and washed off his eyes, and all of a sudden he could see.
 
-This blind man returned and arrived at his home and this place’s religious leaders asked him, "How were your eyes healed?" they asked that. He replied, "Savior Jesus made (them) well." He said that. The religious leaders wouldn’t listen to any of it. They didn’t have faith in/worship Savior Jesus and they didn’t believe this person either.
+And when he came back to town everyone couldn't believe what happened and the religious leaders asked him, "How were your eyes healed?" He replied, "The man named Jesus healed me." But the religious leaders didn't believe him because they hated Jesus.
 
-The religious leaders brought his parents here and asked them if this matter was true or not. That person's parents were very afraid of the religious leaders. Whoever had faith in Savior Jesus, there was a regulation to kick that person out of the religious house. For that reason, they weren't able to say that Savior Jesus had made their own son’s eyes well.
+So, the religious leaders brought his parents in and asked them if this was true or not. Now, the parents were very afraid of the religious leaders because they had said if anyone believes in Jesus, they would be kicked out of the synagogue (house of worship). So, the parents refused to back up their son's story of how he was healed.
 
-The religious leaders again called this guy and asked him. They said, "You speak true words. Who really healed your eyes?" they said. He replied back, "Savior Jesus made my eyes well. I think he's that person which God sent." (He) said that. Then the religious leaders were very unhappy. They ridiculed/mocked him, and threw him out of the religious house.
+So, the religious leaders called the guy back in and said, "Tell us the truth. Who really healed your eyes?" He replied, "I told you, Jesus healed me. He has to be from God."  Well, this infuriated the religious leaders. And they mocked him and kicked him out of the synagogue (house of worship).
 
-Savior Jesus heard about this whole matter. After this, this guy and Savior Jesus met. Savior Jesus asked that guy, "Do you have faith in that Savior that God sent?" he asked this. That person said back, "Who is He? If I knew, I would have faith. You tell me." (He) said that. Then Savior Jesus said, "That person is me." He replied like that. Then that man had faith in Savior Jesus and praised God.
+Jesus heard about everything that happened, so He went and found the man. And He asked him, "Do you believe in the Savior of the world?" The man replied, "Who is He? I don't know who He is, but I want to believe."  Then Jesus said, "I am the Savior of the world." Then the man said, "Yes, I believe in You," and he fell on his knees and began worshipping Jesus.

@@ -1,5 +1,5 @@
 ---
-title: "Man and Woman Sin"
+title: "The First Sin"
 order: 2
 coverImage: "../../assets/stories/covers/2-Fall-of-Man.webp"
 video: "https://media.amdo.app/video/2-Fall-of-Man.mp4"
@@ -8,14 +8,18 @@ videoDuration: "2:54"
 audioDuration: "2:47"
 ---
 
-The man and woman lived in the garden God made. In this garden there were many delicious fruit. Not only this, but in the garden there was also a tree to know the difference between good and evil.
+The man and woman lived in the garden God made. In this garden there were many delicious fruits. And there was also a certain tree to know the difference between good and evil.
 
-God told the man and woman, “In this garden you 2 can eat whatever fruit. But the fruit upon the tree to know the difference between good and evil, you may not eat. If you eat it, you 2 will die,” He said like that.
+God told the man and woman, "You can eat any fruit you want in the garden. But don't eat the fruit on the tree to know the difference between good and evil. If you eat it, you'll die."
 
-One day a snake came to the woman’s side, and said, “Did God say you 2 cannot eat any fruit in the garden?” he asked that. This woman said, “God told the 2 of us we can eat the fruit of any fruit tree. But do not eat the fruit upon the tree to know the difference between good and evil. If we eat it, we will die. He said like that,” she said like that. The snake said, “You 2 will not die. If you eat this fruit, you 2 will become like God. For this reason God said not to eat this fruit,” he said that.
+One day a snake came to the woman and said, "Did God say you can't eat any fruit in the garden?" The woman replied, "God told us we can eat the fruit of any tree. But we're not allowed to eat the fruit on the tree to know the difference between good and evil. If we eat it, we will die." Then the snake said, "You're not going to die. In fact, if you eat it, you'll be just like God. That's why He told you not to eat this fruit."
 
-Then the woman thought about what the snake said, and she wanted to be a wise person. She ate the fruit. She gave some to the man beside her, and he also ate. Before, they were naked. But they didn’t know they were naked. After they ate the fruit they knew they were naked and began to be embarrassed.
+Then the woman thought about what the snake said, and she wanted this knowledge the fruit could give her. So, she ate it. Then she gave some to the man beside her, and he also ate it.
 
-Sometime later God came into the garden. The man and the woman were afraid, and hid among the trees/forest. Then God asked, “Man, where are you?” He asked that. The man told God everything that the 2 of them had done. Not only this, the man put all the blame on the woman. Then the woman also put all the blame on the snake.
+Now before, the man and the woman were naked, but they didn't know they were naked. But after they ate the fruit, they immediately knew they were naked and were embarrassed and ashamed.
 
-Then God punished them. “One day you 2 will die,” God said like that. Then God kicked the man and woman out of the garden. Them 2 could never go back into the garden. From then on, there was sin in the world. There was also suffering in the world. But, God had compassion and helped them regularly.
+Well, sometime later God came into the garden, and the man and the woman were afraid, and hid among the trees. Then God called out, "Hey, where are you?"  Finally, the man came and told God everything the 2 of them had done. And of course he blamed the woman for everything. Then the woman herself blamed the snake for everything.
+
+And so, God punished them 1 by 1. He told the woman, "You're going to suffer a lot of pain during childbirth." And to the man, He said, "You're going to struggle a lot to get food." Lastly, God told them, "And one day, you are going to die."
+
+Then God kicked the man and woman out of the garden. From then on, there was sin and suffering in the world. But God had compassion on them, and He continued to help them in their lives.

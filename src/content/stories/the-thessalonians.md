@@ -1,5 +1,5 @@
 ---
-title: "The Thessalonians"
+title: "Early Church"
 order: 11
 coverImage: "../../assets/stories/covers/11-The-Thessalonians.webp"
 video: "https://media.amdo.app/video/11-The-Thessalonians.mp4"
