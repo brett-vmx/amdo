@@ -1,8 +1,27 @@
 ---
 import { getCollection } from 'astro:content';
 import { getImage } from 'astro:assets';
+import { LayoutGrid, CirclePlay, BookOpen } from '@lucide/astro';
 import Layout from '../layouts/Layout.astro';
 import StoryCard from '../components/StoryCard.astro';
+import BibleCard from '../components/BibleCard.astro';
+
+const bibleResources = [
+  {
+    name: 'New Tibetan Bible',
+    description: 'Full Bible',
+    website: 'https://new-tibetan-bible.com/read/',
+    image: 'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/64/17/31/64173184-e736-1ecd-f630-113ebcfe6474/AppIcon-1x_U007emarketing-0-7-0-85-220-0.png/460x0w.webp',
+  },
+  {
+    name: 'Central Tibetan Bible',
+    description: 'New Testament Only',
+    website: 'https://www.gsungrab.org/online_tibetan_bible/bo-04-MRK-001.html',
+    image: 'https://is1-ssl.mzstatic.com/image/thumb/Purple126/v4/e0/d0/24/e0d02405-318f-94dd-468e-e80e1a871bcf/AppIcon-1x_U007emarketing-0-7-0-85-220.png/460x0w.webp',
+    imageBg: '#676632',
+    imageRounded: true,
+  },
+];
 
 const all = await getCollection('stories');
 const byOrder = (a: any, b: any) => a.data.order - b.data.order;
@@ -33,23 +52,100 @@ const gridClass = 'grid grid-cols-2 gap-4 sm:grid-cols-3';
 ---
 
 <Layout>
-  <div class="mx-auto max-w-5xl px-4 pt-1 pb-6 sm:pb-8">
-    <p class="text-2xl font-bold tracking-tight text-navy mb-10 text-center">Creation to Christ</p>
+  <!-- ===================== STORIES VIEW ===================== -->
+  <div id="view-stories">
+    <div class="mx-auto max-w-5xl px-4 pt-1 pb-24 sm:pb-28">
+      <p class="text-2xl font-bold tracking-tight text-navy mb-10 text-center">Creation to Christ</p>
 
-    <section aria-label="Stories">
-      <div class={gridClass}>
-        {
-          stories.map((story) => (
-            <StoryCard
-              slug={story.id}
-              title={story.data.title}
-              cover={story.data.coverImage}
-            />
-          ))
-        }
-      </div>
-    </section>
+      <section aria-label="Stories">
+        <div class={gridClass}>
+          {
+            stories.map((story) => (
+              <StoryCard
+                slug={story.id}
+                title={story.data.title}
+                cover={story.data.coverImage}
+              />
+            ))
+          }
+        </div>
+      </section>
+    </div>
   </div>
+
+  <!-- ===================== REWA HOPE VIEW ===================== -->
+  <div id="view-hope" style="display:none">
+    <div class="mx-auto max-w-2xl px-4 pt-1 pb-24 sm:pb-28">
+      <p class="text-2xl font-bold tracking-tight text-navy mb-10 text-center">Rewa Hope</p>
+
+      <div class="rounded-card overflow-hidden shadow-sm bg-surface p-4">
+        <div style="position:relative;padding-bottom:75%;overflow:hidden;height:0;max-width:100%;border-radius:0.625rem">
+          <iframe
+            id="627ac931064a657a8df4c4fc2a32e5cd-vod-dd2dfa621325f3c82e7f36f1a79f56fe"
+            src="https://iframe.dacast.com/vod/627ac931064a657a8df4c4fc2a32e5cd/dd2dfa621325f3c82e7f36f1a79f56fe"
+            width="100%"
+            height="100%"
+            frameborder="0"
+            scrolling="no"
+            allow="autoplay;encrypted-media"
+            allowfullscreen
+            webkitallowfullscreen
+            mozallowfullscreen
+            oallowfullscreen
+            msallowfullscreen
+            style="position:absolute;top:0;left:0;"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== BIBLE VIEW ===================== -->
+  <div id="view-bible" style="display:none">
+    <div class="mx-auto max-w-5xl px-4 pt-1 pb-24 sm:pb-28">
+      <p class="text-2xl font-bold tracking-tight text-navy mb-10 text-center">Bible</p>
+
+      <section aria-label="Bible resources">
+        <div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
+          {
+            bibleResources.map((r) => (
+              <BibleCard
+                name={r.name}
+                description={r.description}
+                website={r.website}
+                image={r.image}
+                imageBg={r.imageBg}
+                imageRounded={r.imageRounded}
+              />
+            ))
+          }
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- ===================== BOTTOM TAB BAR ===================== -->
+  <nav
+    id="tab-bar"
+    aria-label="Primary"
+    class="fixed bottom-0 left-0 right-0 z-40 bg-navy border-t border-white/10"
+    style="padding-bottom: env(safe-area-inset-bottom)"
+  >
+    <div class="mx-auto max-w-[430px] flex">
+      <button type="button" data-view="stories" class="tab-btn flex-1 flex flex-col items-center gap-1 py-2.5 text-teal" aria-selected="true">
+        <LayoutGrid size={22} aria-hidden="true" />
+        <span class="text-xs font-semibold">Stories</span>
+      </button>
+      <button type="button" data-view="hope" class="tab-btn flex-1 flex flex-col items-center gap-1 py-2.5 text-white/60" aria-selected="false">
+        <CirclePlay size={22} aria-hidden="true" />
+        <span class="text-xs font-semibold">Rewa Hope</span>
+      </button>
+      <button type="button" data-view="bible" class="tab-btn flex-1 flex flex-col items-center gap-1 py-2.5 text-white/60" aria-selected="false">
+        <BookOpen size={22} aria-hidden="true" />
+        <span class="text-xs font-semibold">Bible</span>
+      </button>
+    </div>
+  </nav>
 
   <!-- ===================== STORY MODAL ===================== -->
   <div id="story-modal" class="fixed inset-0 z-50 hidden">
@@ -438,7 +534,33 @@ const gridClass = 'grid grid-cols-2 gap-4 sm:grid-cols-3';
     }
   }
 
+  function initTabs() {
+    const buttons = document.querySelectorAll<HTMLButtonElement>('.tab-btn');
+    const views: Record<string, HTMLElement | null> = {
+      stories: document.getElementById('view-stories'),
+      hope:    document.getElementById('view-hope'),
+      bible:   document.getElementById('view-bible'),
+    };
+
+    function setActive(target: string) {
+      buttons.forEach((b) => {
+        const active = b.dataset.view === target;
+        b.setAttribute('aria-selected', String(active));
+        b.classList.toggle('text-teal', active);
+        b.classList.toggle('text-white/60', !active);
+      });
+      Object.entries(views).forEach(([key, el]) => {
+        if (el) el.style.display = key === target ? 'block' : 'none';
+      });
+    }
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => setActive(btn.dataset.view ?? 'stories'));
+    });
+  }
+
   document.addEventListener('astro:page-load', () => {
     initModal();
+    initTabs();
   });
 </script>

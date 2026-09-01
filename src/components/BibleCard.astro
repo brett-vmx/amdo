@@ -1,0 +1,39 @@
+---
+interface Props {
+  name: string;
+  description: string;
+  website: string;
+  image: string;
+  imageBg?: string;
+  imageRounded?: boolean;
+}
+
+const { name, description, website, image, imageBg, imageRounded = false } = Astro.props;
+---
+
+<a
+  href={website}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="group block bg-surface rounded-card overflow-hidden shadow-sm
+         transition-all duration-200 hover:scale-[1.03] hover:shadow-xl
+         focus-visible:outline-2 focus-visible:outline-teal focus-visible:outline-offset-2"
+>
+  <div class="aspect-square overflow-hidden bg-navy/5 flex items-center justify-center" style={imageBg ? `background-color:${imageBg}` : undefined}>
+    <img
+      src={image}
+      alt={`${name} icon`}
+      class:list={["h-full w-full object-cover", imageRounded && "rounded-[22%]"]}
+      loading="lazy"
+    />
+  </div>
+
+  <div class="bg-navy p-3 sm:p-4">
+    <h3 class="font-bold leading-snug text-white group-hover:text-teal-light transition-colors text-lg">
+      {name}
+    </h3>
+    {description && (
+      <p class="mt-1 text-sm text-teal">{description}</p>
+    )}
+  </div>
+</a>

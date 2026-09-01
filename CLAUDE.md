@@ -103,7 +103,11 @@ Confirmed both independently via `/@fs/...` (raw file correct) and a manual cach
 ---
 
 ## Page structure
-Single page (`src/pages/index.astro`): header ("Amdo Stories") → subtitle → 2-col mobile / 3–4-col desktop grid of all 11 stories, ordered 1–11. No toggle, no sections, no footnote (no external image credit needed — covers are the client's own Glide assets).
+Single page (`src/pages/index.astro`), matching the original Glide app's 3-tab structure: a fixed bottom tab bar (`Stories` / `Rewa Hope` / `Bible`, Lucide `LayoutGrid`/`CirclePlay`/`BookOpen` icons) toggles three view containers (`#view-stories`, `#view-hope`, `#view-bible`) via plain show/hide JS (`initTabs()`), same pattern as C2C's old Stories/Groups toggle. All three views share the header ("Amdo Stories") and a matching subtitle style per view. Each view's outer wrapper carries extra bottom padding (`pb-24 sm:pb-28`) to clear the fixed tab bar.
+- **Stories**: 2-col mobile / 3-col desktop grid of all 11 stories, ordered 1–11 (unchanged from before tabs existed).
+- **Rewa Hope**: static thumbnail image + the Dacast VOD iframe embed (responsive via the standard `padding-bottom:75%` wrapper technique), for the Mars Hill "Amdo Tibetan HOPE" film — embed code and thumbnail URL supplied directly by the client, not self-hosted.
+- **Bible**: a grid of `BibleCard` components (same visual language as `StoryCard` — navy info area, white title, teal subtitle — but square image, since these are app-icon-shaped assets, not 16:9 story art), each linking out to an external site in a new tab (`target="_blank" rel="noopener noreferrer"`) — these are NOT in-app modal content. Data is a plain literal array in `index.astro`'s frontmatter (2 entries: New Tibetan Bible, Central Tibetan Bible), sourced from `Amdo-More-Bible.csv`'s `Type: Bible` rows — "Bhutan's Bible" was excluded (no working website/description) and "Dolpo Tibetan Bible" was removed by client request.
+  - **`imageBg` / `imageRounded` props on `BibleCard`**: some third-party app-icon assets (e.g. Central Tibetan Bible's) are exported as a flat square PNG with the actual rounded-icon art inset on a plain white canvas — displayed at full-bleed via `object-cover`, the icon's own corner rounding leaves visible white slivers at our card's corners. `imageRounded` clips the `<img>` itself at `rounded-[22%]` (deliberately larger than the source icon's own ~11–12%-radius corner, so the clip fully covers the white with margin to spare) and `imageBg` fills the wrapper behind it with the icon's own dominant color (sampled directly from the source PNG, not guessed) so the clip is invisible. Only applied where an icon actually has this artifact — not a default.
 
 **Modal** (same anchoring/animation rules as C2C — see C2C's CLAUDE.md for the exact mobile-bottom-sheet vs desktop-centered mechanics, swipe-to-dismiss, and close-button behavior, all copied verbatim):
 - Title (no separate cover-image hero — it was removed as a duplicate of the video's poster frame, which shows the same art immediately below)
@@ -120,11 +124,11 @@ Single page (`src/pages/index.astro`): header ("Amdo Stories") → subtitle → 
 - Do not navigate to `/story/[slug]` from within the app — use the modal
 - Do not use `src/content/config.ts` (legacy) — use `src/content.config.ts` (Astro 5)
 - Do not add a Story Groups view or a set/toggle — this app is single-set by design
-- Do not add written Tibetan script anywhere in the UI
+- Do not author written Tibetan script anywhere in our own UI text (titles, transcripts, labels) — this doesn't apply to the Bible tab's third-party app-icon images, which legitimately contain Tibetan script as part of those apps' own branding; that's their content, not ours
 - Do not bundle audio/video files into the repo — they belong on R2
 - Do not assume video and audio share a duration — they're separate recordings
-- Do not add a Bible resources tab yet — client is deferring that (`Amdo-More-Bible.csv` exists but is unused for now)
-- Do not add Mars Hill "The Hope" video embeds yet — client is waiting on separate permission for this app specifically
+- Do not self-host the Rewa Hope video — it's a Dacast-hosted embed, client-supplied; don't try to download/re-host it on R2
+- Do not add more `Amdo-More-Bible.csv` resource types (Storying/Discipleship/Worship/Book/Prayer) to the Bible tab without asking — scope is deliberately just the `Type: Bible` rows, matching the original Glide app's simpler Bible tab
 
 ---
 
@@ -135,5 +139,4 @@ Single page (`src/pages/index.astro`): header ("Amdo Stories") → subtitle → 
 - **Cloudflare API token caveat**: the wrangler OAuth token has `zone:read` but no `dns_records:*` scope, so DNS record changes can't be scripted with it — only R2's own custom-domain endpoint works programmatically (`wrangler r2 bucket domain add`, which manages its own CNAME outside the normal DNS API). Adding/editing ordinary DNS records requires the Cloudflare dashboard or a separately-issued API token with `Zone.DNS` edit permission.
 
 ## Other open items
-- **`Amdo-More-Bible.csv`** (19 Tibetan Bible/discipleship resources) is unused — client wants to hold off on a Bible tab for now, may revisit.
-- **Mars Hill "The Hope" video** — client has permission for a different app; likely to request permission for this one too, but hasn't yet. Don't add without explicit confirmation.
+- **`Amdo-More-Bible.csv`**'s other 15 rows (Storying/Discipleship/Worship/Website/Book/Prayer types) remain unused — only the 3 `Type: Bible` rows with working links are on the Bible tab. Client hasn't asked for the rest; don't add them speculatively.
