@@ -8,16 +8,14 @@ videoDuration: "2:32"
 audioDuration: "2:25"
 ---
 
-After Savior Jesus died on the cross, some people buried His body in a tomb. Three days later, some women who believed in Jesus went to His tomb. When they arrived there, the tomb's entrance was open, and Jesus' body was no longer there. And they were shocked and confused. Suddenly, 2 angels appeared and said, "Jesus is not here. He has come back to life."
+After Savior Jesus died upon a wooden cross, some people buried His body in a tomb. Three days later, some women who believed in Savior Jesus went to where His tomb was. They arrived at the place where the tomb was, and when they looked, not only was the tomb's entrance open, but Savior Jesus' body was no longer there. They were surprised. At that time 2 angels appeared and said, "Savior Jesus is not here because He has come back to life."
 
-The women were so happy and ran back and told Jesus' closest followers the news. But they thought the women were crazy and didn't believe them.
+Then those women were so happy and ran off and told Savior Jesus' students the news. The students thought that the women had gone crazy. What they say isn’t true, how can it be true, they thought.
 
-That evening, as Jesus' closest followers were gathered together, Jesus suddenly appeared. And they were completely scared thinking it was a ghost or something. Jesus said to them, "Don't be afraid. Look, It's me." And when they saw that Jesus really had come back to life, they were so excited.
+That evening, as Savior Jesus' students and others who believed in Him were gathered together, Savior Jesus suddenly appeared among them. They were afraid and surprised. Savior Jesus said, "You don't need to be afraid. Look at me. It's me." And they saw that Savior Jesus really had come back to life, and they became very happy.
 
-Then Jesus explained to them why He needed to die and come back to life. If someone wonders why Jesus had to die and come back to life, this is why:
+Then He told them clearly why He needed to be killed and why He needed to come back to life.
 
-Whoever has sinned, God must punish that person just like He did with the first man and woman.
+If one asks why, some of Jesus’ students explained why: “Whoever sins, God must punish that person. But Savior Jesus died upon a wooden cross in place of all people in order to cleanse people's sins.
 
-But just as God had compassion on the first man and woman, He also has compassion on us and sent the Savior Jesus to die on a cross in our place in order to take the punishment we deserve and cleanse our sins.
-
-Whoever turns away from their sin and believes in Savior Jesus alone, that person's sins are not only cleansed, but they will be like a brand-new person. This is the good news about Jesus.
+Whoever changes their heart and puts their faith in Savior Jesus alone, that person's sins are not only cleansed, but he will also be saved. This is the good news about Savior Jesus.”

@@ -8,18 +8,14 @@ videoDuration: "2:20"
 audioDuration: "2:15"
 ---
 
-Savior Jesus never sinned or did anything bad at all, but some people hated Him and wanted to kill Him. So, one evening while Jesus was praying in a garden, religious leaders suddenly came with soldiers and arrested Him.
+Savior Jesus had never done anything bad, but some people didn't like him and wanted to kill Him. One evening, Savior Jesus was in a garden praying to God. Suddenly, some of this place’s religious leaders brought some soldiers to arrest him, and they arrested him.
 
-And that night they held a secret trial where lots of people lied about Jesus, and they sentenced Him to death.
+Then the soldiers beat Savior Jesus with a whip and beat him many times. Also, they made Savior Jesus carry a huge wooden cross, and they went to the place of execution.
 
-The next morning soldiers beat Jesus with a jagged whip until He was almost unrecognizable. Then they made Jesus carry a huge wooden cross and led Him to the place of execution.
+They arrived at this place and spread his hands in 2 directions and nailed 2 iron stakes into them. Then they crossed his 2 feet and nailed an iron stake into them. Then they erected the large wooden cross.
 
-When they arrived at the place of execution, they spread His arms out on the wooden cross and nailed a stake in each hand. Then they crossed His feet and nailed a stake into them as well. And they lifted up the large wooden cross where Jesus hung there dying.
+The crowd that was watching everything happening to Savior Jesus mocked Him, ridiculed Him, and showed much anger. But Savior Jesus prayed, "Father God, these people do not understand what they are doing. Therefore, forgive them."
 
-But in the midst of this all, Savior Jesus prayed for His executors saying, "God, forgive these people. They don't understand what they are doing."
+At that time, it was noon. Suddenly, darkness covered everything. For several hours, Savior Jesus was hanging on the wooden cross. Then Savior Jesus said, "Everything is accomplished." After this, He died.
 
-The crowd who was watching this whole spectacle began mocking Jesus and said, "This man supposedly saved other people, but look at Him now. If you really are the Savior of the World, then save yourself and come down off the cross."
-
-But Jesus didn't respond to them or do anything at all, and He remained there hanging on the cross. Finally, after several hours on the cross, Savior Jesus said, "It is finished", and He died.
-
-And the people who were beside the wooden cross suddenly began crying. And even a soldier said, "This man really was the Son of God." Then, after this, some people took Jesus' body off the cross and buried Him in a tomb.
+The people who were beside the wooden cross suddenly wept. Not only this, a soldier said, "This man really was an upright person. He really must have been God's Son." Then some people buried Savior Jesus' body in a tomb.

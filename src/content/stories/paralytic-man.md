@@ -8,16 +8,14 @@ videoDuration: "1:48"
 audioDuration: "1:44"
 ---
 
-Savior Jesus grew up, and when He was 30 years old, He started going to many places teaching about God and healing the sick. At this time Savior Jesus became famous.
+Savior Jesus grew up, and when He was thirty years old, He went to many places announcing God's religion and healing people's illnesses. At this time, Savior Jesus became very famous.
 
-One day Jesus was in a house teaching about God, and there were lots of people who came to listen to Him, so much so that people were spilling out of the house.
+One day, he went to a home and was teaching God's religion. While he was teaching religion, some people had placed a lame person on a wooden board and carried him to Savior Jesus. But there were many people in the house, so they weren't able to get to Savior Jesus. Then they went up on the house, lifted off the roof of the house, and lowered the lame man on the wooden board in front of Savior Jesus.
 
-While He was teaching, some people brought a paralyzed man on a stretcher to be healed by Jesus. But since the house was so full, they couldn't get to Jesus, so they went on the roof and somehow made a hole in it and lowered the paralyzed man right in front of Jesus.
+Then, Savior Jesus saw these people’s faith, and He said to that lame person, "Friend, all your sins are cleansed." He said that.
 
-When Jesus saw their faith, He looked at the paralyzed man and said, "Your sins are forgiven".
+The religious leaders of this place heard this and scoffed, "What kind of thing is He saying? Besides God, no one can cleanse a person's sins." They spoke like this back and forth. Then Savior Jesus said, "I do have the power to cleanse people’s sins. I will show you. All of you watch."
 
-Now there were some religious leaders in the crowd. When they heard Jesus say this, they were thinking to themselves, "What? He can't say that. Only God can forgive sins".
+Then Savior Jesus said to that lame person, "Get up, carry your mat, and go home." That lame person got up from the ground and praised God, and he went home.
 
-Well, Jesus knew what they were thinking and He turned to them and said, "What's easier? To say your sins are forgiven, or get up and walk? I'll show you I can forgive sins."
-
-And Jesus turned to the paralyzed man and said, "Get up and go home".  Immediately, the man jumped up, grabbed his mat and walked out praising God. And everyone was amazed and said, "We have never seen anything like this before".
+Then, all the people were amazed and started praising God.

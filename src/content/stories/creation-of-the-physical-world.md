@@ -8,14 +8,16 @@ videoDuration: "2:17"
 audioDuration: "2:09"
 ---
 
-Before the world existed, there was God, and there was only God. And God made the entire world. He made the land, the sky, the oceans, and everything that's in them. And He also made all the various kinds of animals in the world.
+In the beginning, there was only God in the world. God made the sky and earth, the land, mountains, water, and the various kinds of animals. God also made a man.
 
-And after this, God also made a man. This is how He made him. He took dust from the ground and formed a person. Then He breathed into his nose, and instantly, the man became alive.
+If one asks, "How did God make people?" He took the dust of the earth, made the form of a person, and breathed life into the person’s nose. Then the person became alive.
 
-God also made a garden. In the garden, there were different kinds of trees and many delicious fruits on these trees. And God put the man in the garden to live there and take care of it. And so he did.
+God also made a garden. In the garden, there was a river and different kinds of trees. Not only this, but there were many delicious fruits on the trees.
 
-One day, God brought all the animals before the man and told him to name them all. So, one by one they came, and he named everyone of them.
+God put the man in the garden to live there and take care of the garden. So, the man took care of the garden and farmed it.
 
-Now, every animal had its own companion, but the man was alone. So, God put that man into a deep sleep, and took a rib from him, and made a woman. Then God brought the woman before the man, and he was so happy and said "Wow, she is just like me."
+One day, God brought all the various kinds of animals before the man and had him name them. So, the man gave names to every animal, and every animal had its own name.
 
-Then God blessed the man and the woman and put them in charge over all that He made. And God looked across everything He created, and it was perfect. There was no sin, there was no suffering. Everything was perfect.
+Every animal had its own companion, but the man was alone. So, God put the man into a deep sleep, took a rib from him, and made a woman. Then God brought the woman before the man, and he was very happy and said, “Wow, this is really like me.”
+
+Then God blessed the man and the woman and put them in charge over all that He made. God looked at all He made, and He thought it was very good. At this time, there was not any sin, and there was also not any suffering. Everything was very good.

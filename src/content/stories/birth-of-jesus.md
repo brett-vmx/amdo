@@ -8,16 +8,14 @@ videoDuration: "2:33"
 audioDuration: "2:28"
 ---
 
-After the first man and woman sinned, there became more and more people in the world, and there became more and more evil and suffering. Most people rejected God and did whatever they wanted (and even worshipped other gods).
+Most people in the world did many evil things and worshiped idols. God did not like that. But God still had compassion on all people. So, in order to save all people from sin, He sent a Savior.
 
-God was not happy about this all, but He still had compassion on everyone. So, in order to save all people from their sins, He sent a Savior. And this is how He did it.
+If someone asks, "How did God send the Savior?” A long time ago, there was a woman named Mary. Mary had never slept with another person, but she was engaged to a man. That man was a carpenter, and the 2 of them worshiped God very much.
 
-2,000 years ago, there was a woman named Mary. Now Mary had never slept with anyone, but she was engaged to a certain man named Joseph. And they both loved God very much.
+One day, an angel came to Mary and said, "You are going to give birth to a Son. That Son is God's Son. He is a king.”
 
-One day, an angel came to Mary and said, "You are going to give birth to a Son. And He is God's Son and will be very great." And so, Mary became pregnant even though she had never slept with anyone.
+But Mary’s fiancé thought about divorcing her. Then one evening, an angel appeared in the dream to Mary’s fiancé. The angel said, “Do not divorce Mary. God has put the Son inside Mary's womb. That Son will save all people from sin." Then, the two of them got married.
 
-When Joseph discovered that Mary was pregnant, he thought about breaking off the engagement. Then one evening, an angel appeared to Joseph in a dream. The angel said, "Don't break up with Mary. God has put this child in Mary. And this child will save people from their sins."  So, Joseph did not break up with Mary, and the two of them got married.
+After this, the two of them went to their hometown. But at that time, all the hotels were full of people. They had no place to stay. Therefore, the two of them stayed in a livestock enclosure. That evening, Mary gave birth to a Son, and His name was called Jesus. Jesus means, "God is salvation".
 
-After this, the two of them went to the hometown of their ancestors. But, at that time, all the hotels were full, and they had no place to stay. So, they ended up staying in a barn. That evening, Mary gave birth to a Son, and His name was called Jesus. The name Jesus means, "God saves".
-
-Now in the area, some shepherds were taking care of their sheep. Suddenly, many angels arrived in the sky, and the shepherds became scared. But one angel said, "Don't be afraid. I come with Good News. Today a Savior has been born nearby." So, the shepherds went and visited Savior Jesus, and they were so happy and were praising God.
+At that time, in the area, some shepherds were taking care of their sheep. Suddenly, some angels arrived in the sky. The shepherds became scared. But one angel said, "You don't need to be afraid. Today, for the sake of all people, a Savior has been born." Then the shepherds visited Savior Jesus, and their hearts were very happy.

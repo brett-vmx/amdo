@@ -8,10 +8,10 @@ videoDuration: "1:36"
 audioDuration: "1:30"
 ---
 
-Savior Jesus became alive again, and He went back to God’s Heaven. Before He went to Heaven, He (said) to His students, "You go to everywhere in the world, and announce My religion/Word. I will always be with you," (He) said like that. Savior Jesus' students went to all places in the world, and announced His religion/Word. Among these was a person called "Paul".
+Savior Jesus came back to life, and He went back to God’s Heaven. Before He went to Heaven, He told His students, “Go to every place in the world, and announce My religion. I will always be with you.” So, Savior Jesus' students went to all places in the world and announced His religion. Among His students was a person named Paul.
 
-One day when Paul arrived at a place, all the people of that place were having faith in many idols. Then Paul taught Savior Jesus' religion/Word, and many people had faith in/worshipped Savior Jesus.
+One day Paul arrived at a place, and many of the people from that place worshiped many idols. Then Paul taught Savior Jesus' religion, and many people put their faith in Savior Jesus.
 
-Therefore, some other people were unhappy and caused trouble for the believers.  The believers thought about stopping having faith in Savior Jesus.
+Because of this, some other people were angry and caused trouble for the believers. The believers thought about stopping believing in Savior Jesus.
 
-Then Paul comforted them and said, “Whoever believes in Savior Jesus will have trouble. You need to know that having trouble is God's will.” He said like that. From then on, whatever trouble came, God gave them happiness, and gave them joy. Therefore, they continued to have faith in/worship Savior Jesus.
+Then Paul comforted them and said, “Whoever believes in Savior Jesus will have trouble. You need to know that having trouble is God's will.” From then on, whenever trouble came, God gave them joy and happiness. So the believers continued to worship Savior Jesus.
